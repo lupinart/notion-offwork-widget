@@ -10,6 +10,7 @@ try {
   const page = await context.newPage();
   const errors=[]; page.on('pageerror',e=>errors.push(e.message));
   await page.clock.install({time:new Date('2026-11-10T04:30:00Z')});
+  await page.clock.pauseAt(new Date('2026-11-10T04:30:00Z')); // Network load time must not advance the test clock.
   await page.goto(url);
   const state = async kind => page.waitForFunction(k=>document.body.dataset.state===k,kind);
   const setTime = async stamp => {await page.clock.setSystemTime(new Date(stamp));await page.evaluate(()=>dispatchEvent(new Event('pageshow')));};
