@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>下班倒數</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="config.js"></script>
+  <script defer src="timer.js"></script>
+  <script defer src="widget.js"></script>
+</head>
+<body>
+<main id="card" aria-label="下班倒數小工具">
+  <svg viewBox="0 0 512 512" aria-labelledby="card-title" aria-describedby="card-desc" role="img">
+    <title id="card-title">下班倒數</title>
+    <desc id="card-desc">正在讀取台灣時間。</desc>
+    <defs>
+      <linearGradient id="bar-color"><stop stop-color="var(--accent)" stop-opacity=".7"/><stop offset="1" stop-color="var(--accent)"/></linearGradient>
+      <clipPath id="track-clip"><rect x="80" y="372" width="352" height="30" rx="15"/></clipPath>
+      <clipPath id="progress-clip"><rect id="fill-clip" x="80" y="372" width="0" height="30" rx="15"/></clipPath>
+    </defs>
+    <rect class="surface" x="8" y="8" width="496" height="496" rx="96" stroke-width="3"/>
+    <g id="clock" aria-hidden="true">
+      <circle cx="132" cy="122" r="52" class="clock-face" stroke-width="8"/>
+      <g class="clock-dots"><circle cx="132" cy="86" r="4"/><circle cx="168" cy="122" r="4"/><circle cx="132" cy="158" r="4"/><circle cx="96" cy="122" r="4"/></g>
+      <g class="clock-hands" stroke-linecap="round"><path id="hour-hand" d="M132 122V96" stroke-width="8"/><path id="minute-hand" d="M132 122V82" stroke-width="5"/></g>
+      <path id="second-hand" d="M132 130V79" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="132" cy="122" r="6" fill="var(--accent)"/>
+    </g>
+    <g id="coffee" aria-hidden="true" hidden>
+      <circle cx="132" cy="122" r="60" fill="var(--track)"/>
+      <path class="steam" d="M110 99q-12-12 0-25M132 96q-12-12 0-25M154 99q-12-12 0-25"/>
+      <path d="M165 111h9a16 16 0 0 1 0 32h-9" fill="none" stroke="var(--accent)" stroke-width="8"/>
+      <path d="M95 109h70v31q0 26-35 26t-35-26z" fill="var(--accent)"/>
+      <path d="M91 171h82" stroke="var(--muted)" stroke-width="5" stroke-linecap="round"/>
+    </g>
+    <text id="heading" x="206" y="112" class="heading">下班倒數</text>
+    <text id="status" x="206" y="152" class="status">正在讀取時間</text>
+    <g id="countdown">
+      <text x="256" y="309" text-anchor="middle" class="metric"><tspan id="hours">—</tspan><tspan class="unit" dx="12">小時</tspan></text>
+      <text id="remainder" x="256" y="351" text-anchor="middle" class="remainder">— 分 — 秒</text>
+    </g>
+    <g id="rest" hidden>
+      <text id="rest-main" x="256" y="319" text-anchor="middle" class="rest-main">下班啦</text>
+      <text id="rest-note" x="256" y="391" text-anchor="middle" class="rest-note">把時間留給自己</text>
+    </g>
+    <g id="progress-area" aria-hidden="true">
+      <rect x="80" y="372" width="352" height="30" rx="15" fill="var(--track)"/>
+      <g clip-path="url(#track-clip)"><g clip-path="url(#progress-clip)">
+        <rect x="80" y="372" width="352" height="30" fill="url(#bar-color)"/>
+        <g class="stripes" fill="white" opacity=".2"><path d="M40 372h16l-20 30H20zM80 372h16l-20 30H60zM120 372h16l-20 30h-16zM160 372h16l-20 30h-16zM200 372h16l-20 30h-16zM240 372h16l-20 30h-16zM280 372h16l-20 30h-16zM320 372h16l-20 30h-16zM360 372h16l-20 30h-16zM400 372h16l-20 30h-16zM440 372h16l-20 30h-16z"/></g>
+      </g></g>
+      <text id="start" x="80" y="444" class="bar-label">08:00</text>
+      <text id="percent" x="256" y="444" text-anchor="middle" class="bar-percent">0%</text>
+      <text id="end" x="432" y="444" text-anchor="end" class="bar-label">17:00</text>
+    </g>
+  </svg>
+  <div id="accessible-progress" class="sr-only" role="progressbar" aria-label="今日上班進度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+  <p id="error" role="alert" hidden></p>
+  <noscript>請開啟JavaScript，才能顯示即時下班倒數。</noscript>
+</main>
+</body>
+</html>
