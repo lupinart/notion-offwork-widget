@@ -50,7 +50,7 @@ try {
     await page.setViewportSize({width,height});
     const b=await page.locator('svg').boundingBox();
     assert.ok(Math.abs(b.width-b.height)<1,'Card must stay square in rectangular Notion embeds');
-    assert.ok(Math.abs(b.width-(width-34))<1,'Card fills the embed width even when the embed is short');
+    assert.ok(Math.abs(b.width-(Math.min(320,width-32)-2))<1,'Card uses the shared 320px width regardless of embed height');
   }
   await page.goto(url+'?start=09:30&end=18:30&accent=337ea9&theme=light');
   await state('working');
