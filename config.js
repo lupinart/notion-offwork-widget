@@ -6,8 +6,8 @@ globalThis.OFFWORK_CONFIG = {
   workdays: [1, 2, 3, 4, 5], // 0週日、1週一 … 6週六
   theme: 'auto',
   colors: {
-    lightAccent: '#4c7dff', darkAccent: '#9ab5ff',
-    lightSurface: '#f5f8ff', darkSurface: '#242d3d',
+    lightAccent: '#4f91c7', darkAccent: '#8bbcdf',
+    lightSurface: '#f9f8f7', darkSurface: '#252525',
   },
   text: {
     workingTitle: '距離下班還有', workingStatus: '努力上班中',

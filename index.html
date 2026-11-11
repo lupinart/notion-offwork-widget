@@ -16,13 +16,14 @@
     <title id="card-title">下班倒數</title>
     <desc id="card-desc">正在讀取台灣時間。</desc>
     <defs>
-      <linearGradient id="bar-color"><stop stop-color="var(--accent)" stop-opacity=".7"/><stop offset="1" stop-color="var(--accent)"/></linearGradient>
       <clipPath id="track-clip"><rect x="80" y="372" width="352" height="30" rx="15"/></clipPath>
       <clipPath id="progress-clip"><rect id="fill-clip" x="80" y="372" width="0" height="30" rx="15"/></clipPath>
     </defs>
-    <rect class="surface" x="8" y="8" width="496" height="496" rx="96" stroke-width="3"/>
+    <rect class="surface" width="512" height="512"/>
+    <rect class="header-surface" width="512" height="194"/>
+    <path class="header-line" d="M0 194H512"/>
     <g id="clock" aria-hidden="true">
-      <circle cx="132" cy="122" r="52" class="clock-face" stroke-width="8"/>
+      <circle cx="132" cy="122" r="52" class="clock-face" stroke-width="5"/>
       <g class="clock-dots"><circle cx="132" cy="86" r="4"/><circle cx="168" cy="122" r="4"/><circle cx="132" cy="158" r="4"/><circle cx="96" cy="122" r="4"/></g>
       <g class="clock-hands" stroke-linecap="round"><path id="hour-hand" d="M132 122V96" stroke-width="8"/><path id="minute-hand" d="M132 122V82" stroke-width="5"/></g>
       <path id="second-hand" d="M132 130V79" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
@@ -48,8 +49,7 @@
     <g id="progress-area" aria-hidden="true">
       <rect x="80" y="372" width="352" height="30" rx="15" fill="var(--track)"/>
       <g clip-path="url(#track-clip)"><g clip-path="url(#progress-clip)">
-        <rect x="80" y="372" width="352" height="30" fill="url(#bar-color)"/>
-        <g class="stripes" fill="white" opacity=".2"><path d="M40 372h16l-20 30H20zM80 372h16l-20 30H60zM120 372h16l-20 30h-16zM160 372h16l-20 30h-16zM200 372h16l-20 30h-16zM240 372h16l-20 30h-16zM280 372h16l-20 30h-16zM320 372h16l-20 30h-16zM360 372h16l-20 30h-16zM400 372h16l-20 30h-16zM440 372h16l-20 30h-16z"/></g>
+        <rect x="80" y="372" width="352" height="30" fill="var(--custom-accent,var(--progress))"/>
       </g></g>
       <text id="start" x="80" y="444" class="bar-label">08:00</text>
       <text id="percent" x="256" y="444" text-anchor="middle" class="bar-percent">0%</text>
